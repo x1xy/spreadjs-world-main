@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to SpreadJS World!</title>
+
+
+    <link href="lib/spreadjs/css/gc.spread.sheets.excel2016colorful.14.0.6.css" rel="stylesheet" type="text/css"/>
+    <link href="lib/spreadjs/designer/css/gc.spread.sheets.designer.14.0.6.min.css" rel="stylesheet" type="text/css"/>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"-->
+<!--          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">-->
+
+    <script src="lib/pako.min.js" type="text/javascript"></script>
+    <script src="lib/jquery.min.js" type="text/javascript"></script>
+    <script src="lib/FileSaver.js" type="text/javascript"></script>
+    <script src="lib/spreadjs/scripts/gc.spread.sheets.all.14.0.6.min.js" type="text/javascript"></script>
+    <script src="lib/spreadjs/scripts/interop/gc.spread.excelio.14.0.6.min.js" type="text/javascript"></script>
+    <script src="lib/spreadjs/scripts/plugins/gc.spread.sheets.print.14.0.6.min.js" type="text/javascript"></script>
+    <script src="lib/spreadjs/scripts/plugins/gc.spread.sheets.pdf.14.0.6.min.js" type="text/javascript"></script>
+    <script src="lib/spreadjs/scripts/plugins/gc.spread.sheets.charts.14.0.6.min.js" type="text/javascript"></script>
+    <script src="lib/spreadjs/scripts/plugins/gc.spread.sheets.shapes.14.0.6.min.js" type="text/javascript"></script>
+    <script src="lib/spreadjs/scripts/plugins/gc.spread.pivot.pivottables.14.0.6.min.js" type="text/javascript"></script>
+    <script src="lib/spreadjs/scripts/plugins/gc.spread.calcengine.languagepackages.14.0.6.min.js" type="text/javascript"></script>
+    <script src="lib/spreadjs/scripts/resources/zh/gc.spread.sheets.resources.zh.14.0.6.min.js" type="text/javascript"></script>
+    <script src="lib/spreadjs/designer/scripts/gc.spread.sheets.designer.resource.cn.14.0.6.min.js" type="text/javascript"></script>
+    <script src="lib/spreadjs/designer/scripts/gc.spread.sheets.designer.all.14.0.6.min.js" type="text/javascript"></script>
+
+    <script src="index.js" type="text/javascript"></script>
+    <script src="ribbon.view.js" type="text/javascript"></script>
+    <script src="ribbon.chart.js" type="text/javascript"></script>
+    <script src="ribbon.file.js" type="text/javascript"></script>
+    <script src="ribbon.data.js" type="text/javascript"></script>
+    <script src="ribbon.print.js" type="text/javascript"></script>
+    <script src="ribbon.pivot.js" type="text/javascript"></script>
+    <script src="ribbon.tab.js" type="text/javascript"></script>
+    <script src="sidePanels.picture.js" type="text/javascript"></script>
+    <script src="designer.js" type="text/javascript"></script>
+    <script src="contextmenu.js" type="text/javascript"></script>
+    <script src="brush.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+<header><h1 class="header">Welcome to SpreadJS World!</h1></header>
+<img id="brushIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHkAAAB5CAMAAAAqJH57AAAAY1BMVEX///8AAADx8fH19fX8/Pz5+floaGjp6elVVVWUlJRfX19iYmLi4uLFxcU2NjZMTEwgICBBQUETExO3t7cwMDBaWlqOjo6urq6Dg4OamprS0tKlpaXY2Ng7OztHR0fMzMx0dHQCCum/AAAFeklEQVRogcVb6cKqIBR0zRZLW78yW97/Ka8m6gAHQRTv/MuSkeFwzgDmefMhDGdsbAyC3fb/UMc731/F/4M48yusl6cOdv4Pu6UFD1c+w9KCZ36HXbQgb7D1Adflet1L3eC7FHW09gXslqHmpW6QLTHWotQswt1Pruja0902Cwoewhg/PO/Wf3KczQKQelN9jh4LCR5BcN2bS3egdhdmgtQNYKwzV4Kj1I/+MoaZI8FlqRtAmDnJZmFG9rgG9NpBhItRraKeXfAYiG/y10A9d73OBnpcAybXdc7J1VofYoxbQEqZsV6Hw1I3gAifLZthPVYSc9QzlQ+sxwqpG8w9uYyk/iHClDJdcJR6pfvxnIKHYASOgfbnQD3RIGHm8s/CQ6XnUtQ0wpQyRXCsx37OdSJ4Hn0qYeHkshc85Owthld8Uw7AHAYp4F0mVMZP+0hvYughm9mWD8FXZ+11qB5kopxqkLAeN9j/ridPuPQkb51mkALZ0OePJD3fL3gpoW+e4sPjnchLYae6HahHGqS4CaHTYZh5r2wAInxUvW7r8T45DhEPpSk7wdsiUSWt9EKT/kDHl0xtns0y0DLJlcSH4TwOk8uw1209ZoOYKgUnDRkAUopRNgOpGbUqzBRTqkM0ziC19RjCNjmRxAYxC2Ot3agUpGbUpOBfLTHnFDTMTOqTUIpJwfXMWDt0rqJofvcSf0dGOBvnuPw8C6qxcembmZ+DGD3Jixjo6vmST5PIt3KfRs6qM/vtOxW+SAnq1+raJZo/sSXcx9AbuGqg2xHNJMHpCG/xVRNnZimsC8eL2OtgsHwIjhik3hrxel7Z3XEUx1qdzXxhF2G01D/0JSKTqNU5nLfEuM4xt2Jgdi5ShKsFx9QDCWQ7ojiXEEnmgmPdwvpoLHUNNNlvU8FhxuIafpzr/cMWXyJ1QFN3y9vo219cj/S8BS+jlFJIwdthxjXv6IVV+ObalCOcCrMPe2oYKiKh6nDnG5XGmiof398zQ2yNlrrGn9CqNLkowY+P5xefyGoNG4qtmgnOwULqGnKHpAgfLh/96m8kvlJLksGl6vVEqWs85baM6nVHbCe119sDjtrIIDVS2+9SfKhRlA2SIsyUC0wDJORiyrB82EutZJYnF2WQRtRjAqTavlG9HlOPCVAR9oNcNAXBJ0ntUfO5E1yaXFyET5O6ak1JTEU4xMTUc4RiaJtAtgq94FO38veaaiAXTXaDZZHoQGROAeK83jczwaYeAxJ1cPXgJ9d5Fqn3gxWoA6aU/RxSl+QbBKTg3eRixLb1uOE1EboTnHVxBqmL1cCaiUCTUliPtVsRapyNde5QTy5GbL11nz7GdZfhEDCpbc+H0ruON39lWfa+SPWLzQPLIhHeNSayWjGVQVghKf7u1NeGWxEi9AmL37MoH2Igmm5F8IhvNBsgFze6ovS5BpnspJZftpIh7TXVKG9txy3rsUHmUB2Bxuff9qil9dnoaH3/JDqQHlGVai2jWlwwUhg85/ak41AzlHpe3WmBHcLBMxmGs76d8Xjoef2ji5euPgbEbrosHXYSeLsg3pt0eTiwLfHW87oJbKMuD578WSLqD3hPea6okgcX79X1SeRepGlBp28XXe4Sds6yMjXFchfv88XtlCrbKwS1ky63K144eJAEv7gI7Naco9soxDBTn+JPAfNeuAQXN+odvfTPPNBrgFl3sGwJtiOQl/0lQW0nedPrN3LhrJ430nf1vfMwnzpN+R2ZtZO4RuZu6V9yo+zwHw69yz5tyiQpeKl170tMAS4s8teBD2vS2c+FgRr5UvvrOaA+Rt44iy0Ghe/MPo55Fa9+Xdykai31bhHemvoBY51nm3LB/2YF+1s9ry/r5zld6s9R/wAERjrjlbObzQAAAABJRU5ErkJggg==" style="position:absolute;z-index:10000; height:20px; display:none">
+
+<section class="designerContainer">
+    <aside class="designerAside">
+        <div style="width:80px; text-align:center"> </div>
+    </aside>
+    <main class="designerMain">
+        <div id="ssDesigner" class="designerHost"></div>
+        <input type="file" id="ribbon_file_selector" name="file" style="display:none"/>
+    </main>
+    <aside class="designerAside">
+        <div style="width:280px; display:none" id="pivotPanel">Aside</div>
+    </aside>
+</section>
+<footer><h3 class="footer">Copyright © 2021 GrapeCity inc.</h3></footer>
+</body>
+
+</html>
